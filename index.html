@@ -48,24 +48,14 @@
 
 <div class="container">
   <h3>Add Cleaning Plan</h3>
-  <input type="text" id="project" placeholder="Project Name">
-  <input type="date" id="date">
-  <button onclick="saveData()">Save</button>
+
+  <form action="https://script.google.com/macros/s/AKfycbzWmQ-ZHUFLED0Bp1DLioz_uEOjlix4TNC9eI_TlThLFvf5t1ezqX00Y_k_riGj7dOIfw/exec" method="POST">
+    <input type="text" name="project" placeholder="Project Name" required>
+    <input type="date" name="date" required>
+    <button type="submit">Save</button>
+  </form>
+
 </div>
 
-<script>
-function saveData() {
-  const project = document.getElementById("project").value;
-  const date = document.getElementById("date").value;
-
-  fetch("https://script.google.com/macros/s/AKfycbzWmQ-ZHUFLED0Bp1DLioz_uEOjlix4TNC9eI_TlThLFvf5t1ezqX00Y_k_riGj7dOIfw/exec", {
-  method: "POST",
-  mode: "no-cors",
-  body: JSON.stringify({
-    project: project,
-    date: date
-  })
-})
-.then(() => {
-  alert("Saved Successfully!");
-});
+</body>
+</html>
