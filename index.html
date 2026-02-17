@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Solar Panel Cleaning Plan</title>
+  <title>Solar Cleaning Management</title>
   <meta charset="UTF-8">
   <style>
     body {
@@ -40,22 +40,37 @@
     button:hover {
       background: #1e3c72;
     }
-
-    h1 {
-      margin-bottom: 30px;
-    }
   </style>
 </head>
 <body>
 
-  <h1>Solar Cleaning Management</h1>
+<h1>Solar Cleaning Management</h1>
 
-  <div class="container">
-    <h3>Add Cleaning Plan</h3>
-    <input type="text" placeholder="Project Name">
-    <input type="date">
-    <button>Save</button>
-  </div>
+<div class="container">
+  <h3>Add Cleaning Plan</h3>
+  <input type="text" id="project" placeholder="Project Name">
+  <input type="date" id="date">
+  <button onclick="saveData()">Save</button>
+</div>
+
+<script>
+function saveData() {
+  const project = document.getElementById("project").value;
+  const date = document.getElementById("date").value;
+
+  fetch("https://script.google.com/macros/s/AKfycbzWmQ-ZHUFLED0Bp1DLioz_uEOjlix4TNC9eI_TlThLFvf5t1ezqX00Y_k_riGj7dOIfw/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      project: project,
+      date: date
+    })
+  })
+  .then(res => res.text())
+  .then(data => {
+    alert("Saved Successfully!");
+  });
+}
+</script>
 
 </body>
 </html>
