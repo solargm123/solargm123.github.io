@@ -40,6 +40,13 @@
     button:hover {
       background: #1e3c72;
     }
+
+    .success {
+      color: green;
+      margin-top: 15px;
+      display: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -49,13 +56,35 @@
 <div class="container">
   <h3>Add Cleaning Plan</h3>
 
-  <form action="https://script.google.com/macros/s/AKfycbzWmQ-ZHUFLED0Bp1DLioz_uEOjlix4TNC9eI_TlThLFvf5t1ezqX00Y_k_riGj7dOIfw/exec" method="POST">
+  <form 
+    action="https://script.google.com/macros/s/AKfycbzWmQ-ZHUFLED0Bp1DLioz_uEOjlix4TNC9eI_TlThLFvf5t1ezqX00Y_k_riGj7dOIfw/exec"
+    method="POST"
+    target="hidden_iframe"
+    onsubmit="showMessage()"
+  >
     <input type="text" name="project" placeholder="Project Name" required>
     <input type="date" name="date" required>
     <button type="submit">Save</button>
   </form>
 
+  <div class="success" id="successMsg">
+    ✅ บันทึกข้อมูลเรียบร้อยแล้ว
+  </div>
+
 </div>
+
+<!-- iframe ซ่อน -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+function showMessage() {
+  document.getElementById("successMsg").style.display = "block";
+
+  setTimeout(() => {
+    document.getElementById("successMsg").style.display = "none";
+  }, 3000);
+}
+</script>
 
 </body>
 </html>
